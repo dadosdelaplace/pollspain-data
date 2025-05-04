@@ -26,6 +26,9 @@ for (i in 1:nrow(congress_elec)) {
     reframe(import_poll_stations_MIR_files(type_elec, year = NULL, date = date, verbose = FALSE))
   char_month <- str_pad(congress_elec$month[i], width = "2", pad = "0")
 
+  write_csv(raw_poll_congress,
+            file = glue("./data/02-congress/02{congress_elec$year[i]}{char_month}/raw_poll_stations_congress_{congress_elec$year[i]}_{char_month}.csv"))
+
   save(raw_poll_congress,
        file = glue("./data/02-congress/02{congress_elec$year[i]}{char_month}/raw_poll_stations_congress_{congress_elec$year[i]}_{char_month}.rda"))
 }
